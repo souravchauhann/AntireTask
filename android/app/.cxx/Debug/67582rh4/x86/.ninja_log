@@ -1,0 +1,13 @@
+# ninja log v5
+2	50	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/Debug/67582rh4/x86/CMakeFiles/cmake.verify_globs	442456604340fa97
+10	9331	1735663390910057754	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o	ec941504ce5a39ce
+5	9747	1735663391339666497	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o	7c28c97b6dc9669b
+8	10900	1735663392491194829	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o	84337e34d98450b6
+12	11115	1735663392693534092	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o	888e842b0b89c195
+4	11165	1735663392755805387	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o	835f7de88f6eebd1
+7	11318	1735663392909698743	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o	9ddabdfa7467a027
+0	11446	1735663393035623490	CMakeFiles/appmodules.dir/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	2b2875b33550ea4c
+13	11451	1735663393038422773	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o	1096a0e30ce1b0f4
+2	12077	1735663393669637557	CMakeFiles/appmodules.dir/OnLoad.cpp.o	ccbed8ec9fa11af9
+12077	12270	1735663393867957945	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/intermediates/cxx/Debug/67582rh4/obj/x86/libappmodules.so	33cf6e6a6c548243
+1	50	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/Debug/67582rh4/x86/CMakeFiles/cmake.verify_globs	442456604340fa97

@@ -1,0 +1,13 @@
+# ninja log v5
+1	58	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/Debug/67582rh4/arm64-v8a/CMakeFiles/cmake.verify_globs	69180bbe6fba4b01
+23	13710	1735663345045469371	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o	8915ab309128d8f
+11	14659	1735663345932486500	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o	bca0529557a3dec3
+19	17062	1735663348398875450	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o	8b8be39ed88c2e7e
+8	17482	1735663348812721996	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o	2496596fba1004
+25	17533	1735663348855647178	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o	f5c693d0f729ccd0
+14	17765	1735663349095261582	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o	63831e008436cf3f
+1	17992	1735663349323194587	CMakeFiles/appmodules.dir/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	e57c89a72838b553
+27	18024	1735663349350547615	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o	76e714aa99302774
+3	19189	1735663350514141481	CMakeFiles/appmodules.dir/OnLoad.cpp.o	83f96084152864a5
+19190	19737	1735663351073541815	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/intermediates/cxx/Debug/67582rh4/obj/arm64-v8a/libappmodules.so	5da2d8cd272d9472
+2	115	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/Debug/67582rh4/arm64-v8a/CMakeFiles/cmake.verify_globs	69180bbe6fba4b01

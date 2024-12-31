@@ -1,0 +1,19 @@
+# ninja log v5
+7086	7257	1735618840273642049	/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/intermediates/cxx/Debug/2q586a4y/obj/armeabi-v7a/libappmodules.so	907d5ea803a2dd2f
+8	7086	1735618840096544752	CMakeFiles/appmodules.dir/OnLoad.cpp.o	529353a5ed6b72a8
+8	6525	1735618839541989568	CMakeFiles/appmodules.dir/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	7563080e7e12996
+0	21	0	/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/.cxx/Debug/2q586a4y/armeabi-v7a/CMakeFiles/cmake.verify_globs	ab70dfcd08dd7eea
+28	214	1735644914015788964	build.ninja	afbe33d30e67d384
+0	17	0	clean	dd4ae4d9161d10ed
+7	4938	1735618837947321994	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o	4f327ee060227ba0
+11	6252	1735618839254668364	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o	554bed4450358fa9
+10	4591	1735618837602635733	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o	dfd49e7c2323303c
+9	6204	1735618839212472301	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o	1359925cb0ed439b
+12	6529	1735618839541677534	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o	63c8d5dcdbbd8ddb
+9	5908	1735618838917906225	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o	f4888d6020f077b9
+10	6327	1735618839338440363	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o	5f503328756a2c40
+21	101	1735644914015788964	build.ninja	afbe33d30e67d384
+0	19	0	/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/.cxx/Debug/2q586a4y/armeabi-v7a/CMakeFiles/cmake.verify_globs	ab70dfcd08dd7eea
+6	2877	1735644916916250749	CMakeFiles/appmodules.dir/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	7563080e7e12996
+6	3232	1735644917270794028	CMakeFiles/appmodules.dir/OnLoad.cpp.o	529353a5ed6b72a8
+3232	3389	1735644917430981478	/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/intermediates/cxx/Debug/2q586a4y/obj/armeabi-v7a/libappmodules.so	907d5ea803a2dd2f

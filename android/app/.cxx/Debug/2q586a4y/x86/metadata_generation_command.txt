@@ -1,0 +1,23 @@
+                        -H/Users/sourav/Desktop/RNPROJECTS/AntireTask/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=24
+-DANDROID_PLATFORM=android-24
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=/Users/sourav/Library/Android/sdk/ndk/26.1.10909125
+-DCMAKE_ANDROID_NDK=/Users/sourav/Library/Android/sdk/ndk/26.1.10909125
+-DCMAKE_TOOLCHAIN_FILE=/Users/sourav/Library/Android/sdk/ndk/26.1.10909125/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/sourav/Library/Android/sdk/cmake/3.22.1/bin/ninja
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/intermediates/cxx/Debug/2q586a4y/obj/x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build/intermediates/cxx/Debug/2q586a4y/obj/x86
+-DCMAKE_BUILD_TYPE=Debug
+-DCMAKE_FIND_ROOT_PATH=/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/.cxx/Debug/2q586a4y/prefab/x86/prefab
+-B/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/.cxx/Debug/2q586a4y/x86
+-GNinja
+-DPROJECT_BUILD_DIR=/Users/sourav/Desktop/RNPROJECTS/AntireTask/android/app/build
+-DREACT_ANDROID_DIR=/Users/sourav/Desktop/RNPROJECTS/AntireTask/node_modules/react-native/ReactAndroid
+-DANDROID_STL=c++_shared
+-DANDROID_USE_LEGACY_TOOLCHAIN_FILE=ON
+                        Build command args: []
+                        Version: 2
