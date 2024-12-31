@@ -1,0 +1,3 @@
+ninja: Entering directory `/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/armeabi-v7a'
+[0/2] Re-checking globbed directories...
+ninja: no work to do.

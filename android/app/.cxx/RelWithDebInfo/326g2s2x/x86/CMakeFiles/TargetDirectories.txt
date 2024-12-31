@@ -1,0 +1,6 @@
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/CMakeFiles/appmodules.dir
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/CMakeFiles/edit_cache.dir
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/CMakeFiles/rebuild_cache.dir
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/rnasyncstorage_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/x86/rnasyncstorage_autolinked_build/CMakeFiles/rebuild_cache.dir

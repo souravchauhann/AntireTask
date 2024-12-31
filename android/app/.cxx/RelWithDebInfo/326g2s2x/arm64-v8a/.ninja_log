@@ -1,0 +1,14 @@
+# ninja log v5
+2	81	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/arm64-v8a/CMakeFiles/cmake.verify_globs	ec79eae5ed144925
+15	6888	1735664143759234571	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/States.cpp.o	55a949c983d6026f
+9	7427	1735664144298814908	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/EventEmitters.cpp.o	b1de10686a0f4bb9
+13	9491	1735664146362773643	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ShadowNodes.cpp.o	b2530f43ba6114cb
+7	9698	1735664146566126945	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/ComponentDescriptors.cpp.o	731d2d3f689df30e
+1	10273	1735664147144105103	CMakeFiles/appmodules.dir/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	8d6bdf1525f2d6c6
+11	10284	1735664147149912615	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/Props.cpp.o	40b95a4bd983d767
+17	11055	1735664147912165985	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/react/renderer/components/rnasyncstorage/rnasyncstorageJSI-generated.cpp.o	599c495a9198df11
+20	11685	1735664148545961746	rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir/rnasyncstorage-generated.cpp.o	396d0426c18d3fb7
+3	12127	1735664148998002496	CMakeFiles/appmodules.dir/OnLoad.cpp.o	180b78278b52ea4f
+12128	12661	1735664149546851381	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/intermediates/cxx/RelWithDebInfo/326g2s2x/obj/arm64-v8a/libappmodules.so	4ca4c1c204b7d481
+1	95	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/arm64-v8a/CMakeFiles/cmake.verify_globs	ec79eae5ed144925
+0	23	0	/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/arm64-v8a/CMakeFiles/cmake.verify_globs	ec79eae5ed144925

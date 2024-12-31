@@ -1,0 +1,4 @@
+/Users/sourav/Library/Android/sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/.cxx/RelWithDebInfo/326g2s2x/armeabi-v7a \
+  appmodules

@@ -1,0 +1,1 @@
+/Users/sourav/Desktop/RNPROJECTS/antiregit/AntireTask/android/app/build/intermediates/cxx/RelWithDebInfo/326g2s2x/obj/x86
