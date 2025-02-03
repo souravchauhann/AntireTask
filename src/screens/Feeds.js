@@ -1,234 +1,383 @@
-import React, { useEffect } from 'react'
-import { Animated, FlatList, Image, StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native'
-import Colors from '../constants/Colors'
-import { Surface, Text } from 'react-native-paper'
-import MyHeader from '../components/MyHeader'
-import { useRef } from 'react'
-import { useState } from 'react'
-import { data } from '../constants/raw'
-import { SharedElement } from 'react-navigation-shared-element'
-import Pinchable from 'react-native-pinchable';
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React,{useState} from 'react';
+import { Animated, FlatList, Image, Pressable, StatusBar, StyleSheet, Text, View, useWindowDimensions, ScrollView, Dimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { FONTS, IMAGES } from '../../utlis';
 
-const RenderItem = ({ item, navigation }) => {
+const { width, height } = Dimensions.get('window');
+var urrentValue=true
+const FirstRoute = () => {
+  const items = Array.from({ length: 5 }, (_, index) => `Item ${index + 1}`);
+  const [isFirstItemVisible, setIsFirstItemVisible] = useState(false);
+
+  // Create a ref for the viewability config
+  const viewabilityConfig = {
+    itemVisiblePercentThreshold: 50, // Item is considered visible if 50% of it is visible
+  };
+
+  // Callback to handle viewable items
+  const onViewableItemsChanged = ({ viewableItems }) => {
+    const firstItemVisible = viewableItems.some(item => item.index === 0);
+    console.log(">>>",firstItemVisible)
+    if(firstItemVisible == true){
+      // setIsScrollEnabled(true)
+      // setIsFlatlistScroll(false)
+    }
+    setIsFirstItemVisible(firstItemVisible);
+  };
+
   return (
-    <Surface style={styles.item}>
-      <View style={styles.content}>
-        <SharedElement id={`item.${item.avatar}.avatar`}>
-          <Image style={styles.avatar} source={{ uri: item.avatar }} resizeMode="cover" />
-        </SharedElement>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.caption}>{item.caption}</Text>
-        </View>
-      
-      </View>
-      <TouchableOpacity
-        activeOpacity={0.8}
-       >
-        <SharedElement id={`item.${item.image}.image`}>
-          <Pinchable>
-            <Image style={styles.image} source={{ uri: item.image }} resizeMode="cover" />
-          </Pinchable>
-        </SharedElement>
-      </TouchableOpacity>
-     
-    </Surface>
-  )
-}
+    <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
+      <FlatList
+        data={items}
+        keyExtractor={(item) => item.toString()}
+        renderItem={({ item }) => (
+          <Text style={{ padding: 20, fontSize: 18, color: '#fff' }}>
+            {item}
+          </Text>
+        )}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
+      />
+      <Text style={{ padding: 20, fontSize: 18, color: '#fff' }}>
+        Is the first item visible? {isFirstItemVisible ? 'Yes' : 'No'}
+      </Text>
+    </View>
+  );
+};
 
-const CONTAINER_HEIGHT = 50;
-const Feeds = ({ route, navigation }) => {
-  const scrollY = useRef(new Animated.Value(0)).current;
-  const offsetAnim = useRef(new Animated.Value(0)).current;
-  const [focused, setFocused] = useState('home');
-  const clampedScroll = Animated.diffClamp(
-    Animated.add(
-      scrollY.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolateLeft: 'clamp',
-      }),
-      offsetAnim,
-    ),
-    0,
-    CONTAINER_HEIGHT
-  )
-  var _clampedScrollValue = 0;
-  var _offsetValue = 0;
-  var _scrollValue = 0;
-  useEffect(() => {
-    scrollY.addListener(({ value }) => {
-      const diff = value - _scrollValue;
-      _scrollValue = value;
-      _clampedScrollValue = Math.min(
-        Math.max(_clampedScrollValue + diff, 0),
-        CONTAINER_HEIGHT,
-      )
-    });
-    offsetAnim.addListener(({ value }) => {
-      _offsetValue = value;
-    })
-  }, []);
+const SecondRoute = () => (
+  <ScrollView style={{ flex: 1, backgroundColor: '#673ab7' }}>
+    <Text style={{ padding: 20, fontSize: 18, color: '#fff' }}>Second Tab Content</Text>
+  </ScrollView>
+);
 
-  var scrollEndTimer = null;
-  const onMomentumScrollBegin = () => {
-    clearTimeout(scrollEndTimer)
-  }
-  const onMomentumScrollEnd = () => {
-    const toValue = _scrollValue > CONTAINER_HEIGHT &&
-      _clampedScrollValue > (CONTAINER_HEIGHT) / 2
-      ? _offsetValue + CONTAINER_HEIGHT : _offsetValue - CONTAINER_HEIGHT;
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+});
 
-    Animated.timing(offsetAnim, {
-      toValue,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  }
-  const onScrollEndDrag = () => {
-    scrollEndTimer = setTimeout(onMomentumScrollEnd, 250);
-  }
+const routes = [
+  { key: 'first', title: 'First' },
+  { key: 'second', title: 'Second' },
+];
 
-  const headerTranslate = clampedScroll.interpolate({
-    inputRange: [0, CONTAINER_HEIGHT],
-    outputRange: [0, -CONTAINER_HEIGHT],
-    extrapolate: 'clamp',
-  })
-  const opacity = clampedScroll.interpolate({
-    inputRange: [0, CONTAINER_HEIGHT - 20, CONTAINER_HEIGHT],
-    outputRange: [1, 0.05, 0],
-    extrapolate: 'clamp',
-  })
-  const bottomTabTranslate = clampedScroll.interpolate({
-    inputRange: [0, CONTAINER_HEIGHT],
-    outputRange: [0, CONTAINER_HEIGHT * 2],
-    extrapolate: 'clamp',
-  })
+const Feeds = () => {
+const [isFlatlistScroll,setIsFlatlistScroll]=useState(false)
+
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  const layout = useWindowDimensions();
+  const [index, setIndex] = React.useState(0);
+  const [isScrollEnabled, setIsScrollEnabled] = React.useState(true); // Controls outer ScrollView scrollability
+
+  const onFlatListScroll = (event) => {
+    const contentOffsetY = event.nativeEvent.contentOffset.y;
+    
+    // When user scrolls to the top of the FlatList, enable outer ScrollView scrolling
+    if (contentOffsetY <= 0) {
+      setIsScrollEnabled(true);
+    } else {
+      setIsScrollEnabled(false); // Disable outer ScrollView when FlatList is scrolling
+    }
+  };
+
+
+
+  const handleScrolling = (event) => {
+    // Scroll position (distance scrolled vertically)
+    const contentOffsetY = event.nativeEvent.contentOffset.y;
+    
+    // Content height
+    const contentHeight = event.nativeEvent.contentSize.height;
+
+    // Check if the user has reached the bottom
+    if (contentOffsetY + height >= contentHeight) {
+      if (!isAtBottom) {
+        console.log("Reached the bottom of the ScrollView");
+        setIsAtBottom(true);  
+        // setIsScrollEnabled(false)
+        setIsFlatlistScroll(true)
+      }
+    } else {
+      if (isAtBottom) {
+        console.log("User is no longer at the bottom");
+        setIsAtBottom(false); 
+        // setIsScrollEnabled(true)
+        setIsFlatlistScroll(false)
+
+
+      }
+    }
+  };
+
+
 
   return (
     <SafeAreaView style={styles.container}>
-    <StatusBar
+      <StatusBar
         animated
-        barStyle="light-content" 
-        backgroundColor="black" 
-        translucent 
+        barStyle="light-content"
+        backgroundColor="black"
+        translucent
       />
-      <View style={{borderWidth:0,borderColor:'red',flex:1,marginBottom:-30}}>
-      <Animated.FlatList
-    
-    onScroll={Animated.event(
-      [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-      { useNativeDriver: true }
-    )}
-    data={data}
-    keyExtractor={(item, index) => item.title + index.toString()}
-    renderItem={({ item }) => <RenderItem item={item} navigation={navigation} />}
-    contentContainerStyle={styles.contentContainerStyle}
-    onMomentumScrollBegin={onMomentumScrollBegin}
-    onMomentumScrollEnd={onMomentumScrollEnd}
-    onScrollEndDrag={onScrollEndDrag}
-    scrollEventThrottle={1}
-  />
-      </View>
-      
-      <Animated.View style={[styles.view, { top: 50, transform: [{ translateY: headerTranslate }] }]}>
-        <MyHeader
-         
-          style={[styles.header, { opacity }]}
-        />
-      </Animated.View>
-     
+      <ScrollView 
+      onScroll={handleScrolling}
+        contentContainerStyle={styles.scrollContainer} 
+        scrollEnabled={isScrollEnabled} // Outer ScrollView scroll enabled based on FlatList's position
+      >
+        <View style={styles.headerContainer}>
+          <Image
+            style={styles.leftArrow}
+            source={IMAGES.LeftArrow}
+          />
+          <Text style={styles.usernameText}>User _name</Text>
+          <Image
+            style={styles.menuIcon}
+            source={IMAGES.WhiteMenu}
+          />
+        </View>
+
+        <View style={styles.statsContainer}>
+          <View style={styles.profileImageContainer}>
+            <Image
+              style={styles.profileImage}
+              source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+            />
+          </View>
+          <View style={styles.statsDetailsContainer}>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>129</Text>
+              <Text style={styles.statLabel}>Posts</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>3680</Text>
+              <Text style={styles.statLabel}>Followers</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>230</Text>
+              <Text style={styles.statLabel}>Following</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.infoContainer}>
+          <Text style={styles.nameText}>Name</Text>
+          <Text style={styles.businessText}>Local business</Text>
+          <Text style={styles.websiteText}>www.website.com</Text>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <Pressable style={styles.followButton}>
+            <Text style={styles.buttonText}>Follow</Text>
+          </Pressable>
+          <Pressable style={styles.messageButton}>
+            <Text style={styles.buttonText}>Message</Text>
+          </Pressable>
+          <Pressable style={styles.emailButton}>
+            <Text style={styles.buttonText}>Email</Text>
+          </Pressable>
+          <Pressable style={styles.arrowButton}>
+            <Image
+              style={styles.arrowIcon}
+              source={IMAGES.DownArrow}
+            />
+          </Pressable>
+        </View>
+
+        <View style={{ marginHorizontal: 10, borderWidth: 0, borderColor: 'white', marginTop: '6%', marginHorizontal: 20 }}>
+          <FlatList
+          scrollEnabled={isFlatlistScroll}
+            bounces={false}
+            horizontal
+            renderItem={({ item }) => (
+              <View>
+                <View style={{
+                  height: 65, width: 65, borderRadius: 100, borderWidth: 1, borderColor: "white", marginRight: 18,
+                  borderColor: '#7e7e7e', justifyContent: 'center', alignItems: 'center'
+                }}>
+                  <View style={{ backgroundColor: "#146799", height: 58, width: 58, borderRadius: 100, justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: 'white', fontFamily: FONTS.BalooThambiSemiBold, fontSize: 24 }}>{item}</Text>
+                  </View>
+                </View>
+                <Text style={{ color: 'white' }}>HighLight</Text>
+              </View>
+            )}
+            data={[1, 2, 3, 4]}
+            onScroll={onFlatListScroll} // Handle scroll on FlatList to enable or disable outer ScrollView
+          />
+        </View>
+
+        {/* TabView section */}
+        <View style={{ flex: 1, height: height }}>
+          <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+            renderTabBar={(props) => (
+              <TabBar
+                {...props}
+                indicatorStyle={{ backgroundColor: 'white' }}
+                style={{ backgroundColor: "#141414" }}
+              />
+            )}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
+  );
+};
 
-  )
-}
-
-export default Feeds
+export default Feeds;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:"black"
+    backgroundColor: "#141414"
   },
-  view: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    height: CONTAINER_HEIGHT,
-    backgroundColor:"black"
+  scrollContainer: {
+    paddingBottom: 20, // Add some space at the bottom for scrollability
   },
-  header: {
-    borderBottomRightRadius: 16,
-    borderBottomLeftRadius: 16,
-    marginHorizontal: 4,
+  headerContainer: {
+    flexDirection: 'row',
+    borderWidth: 0,
+    borderColor: 'white',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 18
   },
-  bottomBar: {
-    borderTopRightRadius: 16,
-    borderTopLeftRadius: 16,
-    marginHorizontal: 4,
+  leftArrow: {
+    height: 30,
+    width: 20,
+    marginLeft: 5
   },
-  contentContainerStyle: {
-    paddingTop: CONTAINER_HEIGHT,
-    marginTop: 8,
-    borderWidth:0,borderColor:'red',
+  usernameText: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiSemiBold,
+    fontSize: 20
   },
-  rowContainer: {
-    flex: 1,
+  menuIcon: {
+    height: 15,
+    width: 17
+  },
+  statsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    marginHorizontal: 20,
+    justifyContent: 'space-between', marginTop: 8
   },
-  item: {
-    marginHorizontal: 10,
-    // marginBottom: 12,
-    elevation: 6,
-    borderRadius: 4,
-    marginTop:0,
-    backgroundColor:"black"
-
+  profileImageContainer: {
+    borderWidth: 0,
+    borderColor: 'white',
+    width: '25%'
   },
-  title: {
-    fontSize: 16,
-    fontWeight: '700',
-    color:"white"
+  profileImage: {
+    height: 90,
+    width: 90,
+    borderRadius: 100
   },
-  caption: {
-    color: Colors.darkGray,
-  },
-  image: {
-    height: 300,
-    width: null,
-    marginBottom: 1,
-    marginHorizontal: 16,
-    borderRadius: 16,marginBottom:5
-  },
-  bottomView: {
-    alignItems: 'center',
+  statsDetailsContainer: {
+    borderWidth: 0,
+    borderColor: 'white',
+    width: '71%',
     flexDirection: 'row',
-    padding: 16
+    justifyContent: 'space-between'
   },
-  content: {
-    alignItems: 'center',
+  statItem: {
+    borderWidth: 0,
+    borderColor: 'white',
+    width: "30%",
+    alignItems: 'center'
+  },
+  statNumber: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiSemiBold,
+    fontSize: 20,
+    lineHeight: 22
+  },
+  statLabel: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiRegular,
+    fontSize: 17,
+    marginTop: -8
+  },
+  infoContainer: {
+    borderWidth: 0,
+    borderColor: 'white',
+    marginHorizontal: 20,
+    marginTop: "5%"
+  },
+  nameText: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiSemiBold,
+    fontSize: 18,
+    lineHeight: 19
+  },
+  businessText: {
+    color: 'gray',
+    fontFamily: FONTS.BalooThambiRegular2,
+    fontSize: 14,
+    marginTop: -4
+  },
+  websiteText: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiRegular2,
+    fontSize: 16
+  },
+  buttonContainer: {
     flexDirection: 'row',
-    marginHorizontal: 16,
-    paddingVertical: 8,
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
+    marginTop: '7%',
   },
-  textContainer: {
-    marginHorizontal: 16,
+  followButton: {
+    width: "29%",
+    backgroundColor: "#14a5fe",
+    borderRadius: 6,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  avatar: {
-    height: 35,
-    width: 35,
-    borderRadius: 20,
-    backgroundColor: Colors.primary,
-  },
-  rowView: {
+  messageButton: {
+    width: "29%",
+    backgroundColor: "black",
+    borderRadius: 6,
+    height: 30,
+    justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    borderWidth: 1,
+    borderColor: '#7e7e7e'
   },
-  icon: {
-    marginHorizontal: 10,
+  emailButton: {
+    width: "29%",
+    backgroundColor: "black",
+    borderRadius: 6,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#7e7e7e'
   },
-})
+  arrowButton: {
+    width: 30,
+    borderWidth: 1,
+    borderColor: '#7e7e7e',
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    backgroundColor: 'black',
+    marginLeft: 1
+  },
+  arrowIcon: {
+    height: 13,
+    width: 13
+  },
+  buttonText: {
+    color: 'white',
+    fontFamily: FONTS.BalooThambiMedium,
+    fontSize: 17
+  }
+});
